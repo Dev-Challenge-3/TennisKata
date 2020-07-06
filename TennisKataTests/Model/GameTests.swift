@@ -179,7 +179,7 @@ class GameTests: XCTestCase {
     
     //MARK: - Test case to display player one score
 
-    func testGame_PlayerScoresFifteenAll_ShouldReturnPlayerTwoScore() {
+    func testGame_PlayerScoresFifteenAll_ShouldReturnPlayerOneScore() {
         //Arrange
         playerServeWins(player: .playerOne, times: 1)
         playerServeWins(player: .playerTwo, times: 1)
@@ -189,5 +189,16 @@ class GameTests: XCTestCase {
         XCTAssertTrue(playerScore == "15","Player 1 expected to score 15")
     }
 
+    //MARK: - Test case to display player two score
+
+    func testGame_PlayerScoresThirtyAll_ShouldReturnPlayerTwoScore() {
+        //Arrange
+        playerServeWins(player: .playerOne, times: 2)
+        playerServeWins(player: .playerTwo, times: 2)
+        //Act
+        let playerScore = game.playerScore(selectedPlayer: .playerTwo)
+        //Assert
+        XCTAssertTrue(playerScore == "30","Player 2 expected to score 30")
+    }
     
 }

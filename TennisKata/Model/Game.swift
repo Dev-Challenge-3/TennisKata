@@ -62,8 +62,12 @@ class Game {
         switch score {
         case 0:
             return String(score)
-        default:
+        case 1:
             return "15"
+        case 2:
+            return "30"
+        default:
+            return "40"
         }
     }
     
