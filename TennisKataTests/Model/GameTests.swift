@@ -104,7 +104,7 @@ class GameTests: XCTestCase {
         //Assert
         XCTAssertTrue(gameScore == TennisKataConstants.fifteenAll, "Should return game score as \(TennisKataConstants.fifteenAll)")
     }
-    
+        
     //MARK: - Test case for the score 30 - 30
 
     func testGame_PlayerOneScoresThirtyAndPlayerTwoScoresThirty_ShoudReturnScore() {
@@ -176,5 +176,18 @@ class GameTests: XCTestCase {
          //Assert
         XCTAssertTrue(gameScore == TennisKataConstants.playerTwoWins, "Should return \(TennisKataConstants.playerTwoWins)")
     }
+    
+    //MARK: - Test case to display player one score
 
+    func testGame_PlayerScoresFifteenAll_ShouldReturnPlayerTwoScore() {
+        //Arrange
+        playerServeWins(player: .playerOne, times: 1)
+        playerServeWins(player: .playerTwo, times: 1)
+        //Act
+        let playerScore = game.playerScore(selectedPlayer: .playerOne)
+        //Assert
+        XCTAssertTrue(playerScore == "15","Player 1 expected to score 15")
+    }
+
+    
 }

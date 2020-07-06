@@ -42,7 +42,30 @@ class Game {
         return playerOneScore + playerTwoScore
     }
     
+    //MARK: - Display Player scores
+    
+    func playerScore(selectedPlayer: SelectedPlayer) -> String {
+        switch selectedPlayer {
+        case .playerOne:
+            return playerScoreTranslation(score: playerOne.score)
+        case .playerTwo:
+            return playerScoreTranslation(score: playerTwo.score)
+        }
+
+    }
+
+    
     //MARK: - Private Methods
+    
+    private func playerScoreTranslation(score: Int) -> String {
+        
+        switch score {
+        case 0:
+            return String(score)
+        default:
+            return "15"
+        }
+    }
     
     private func isDeuce() -> Bool {
         return playerOne.score >= 3 && playerTwo.score == playerOne.score
