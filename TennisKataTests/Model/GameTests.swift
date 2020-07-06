@@ -49,7 +49,7 @@ class GameTests: XCTestCase {
         XCTAssertTrue(gameScore == TennisKataConstants.thirtyLove, "Should return game score as \(TennisKataConstants.thirtyLove)")
     }
     
-    //MARK: - Test cases for the score 40 - 0
+    //MARK: - Test case for the score 40 - 0
 
     func testGame_GameScoreAfterPlayerOneScoresForty_ShouldReturnScore() {
         //Arrange
@@ -59,4 +59,16 @@ class GameTests: XCTestCase {
         //Arrange
         XCTAssertTrue(gameScore == TennisKataConstants.fortyLove, "Should return game score as \(TennisKataConstants.fortyLove)")
     }
+    
+    //MARK: - Test case for score 0 - 15
+
+    func testGame_GameScoreAfterPlayerTwoWinsFifteen_ShouldReturnScore() {
+        //Arrange
+        playerServeWins(player: .playerTwo, times: 1)
+        //Act
+        let gameScore = game.score()
+        //Arrange
+        XCTAssertTrue(gameScore == TennisKataConstants.loveFifteen, "Should return game score as \(TennisKataConstants.loveFifteen)")
+    }
+
 }
