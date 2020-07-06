@@ -43,8 +43,10 @@ class Game {
             return "love"
         case 1:
             return "fifteen"
-        default:
+        case 2:
             return "thirty"
+        default:
+            return "forty"
         }
     }
 }

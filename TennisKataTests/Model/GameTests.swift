@@ -37,5 +37,18 @@ class GameTests: XCTestCase {
         //Arrange
         XCTAssertTrue(gameScore == "Player 1 thirty - Player 2 love", "Should return game score as Player 1 thirty - Player 2 love")
     }
+    
+    //MARK: - Test cases for the score 40 - 0
 
+    func testGame_GameScoreAfterPlayerOneScoresForty_ShouldReturnScore() {
+        //Arrange
+        game = Game(firstPlayer: playerOne, secondPlayer: playerTwo)
+        game.playerPlays(selectedPlayer: .playerOne)
+        game.playerPlays(selectedPlayer: .playerOne)
+        game.playerPlays(selectedPlayer: .playerOne)
+        //Act
+        let gameScore = game.score()
+        //Arrange
+        XCTAssertTrue(gameScore == "Player 1 forty - Player 2 love", "Should return game score as Player 1 forty - Player 2 love")
+    }
 }
