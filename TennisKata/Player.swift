@@ -11,4 +11,8 @@ class Player {
     func play() {
         score += 1
     }
+    
+    func clearScore() {
+        score = 0
+    }
 }

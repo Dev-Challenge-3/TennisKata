@@ -30,5 +30,15 @@ class TennisKataTests: XCTestCase {
         //Assert
         XCTAssertTrue(player.score == 1, "Players score should update")
     }
-
+    
+    //MARK: - Test case to reset players score
+    
+    func testPlayer_ClearPlayersScore_ShouldResetScore() {
+        //Arrange
+        let player = Player(playerName: "Player 1")
+        //Act
+        player.clearScore()
+        //Assert
+        XCTAssertTrue(player.score == 0, "Players score should reset")
+    }
 }
