@@ -19,4 +19,16 @@ class TennisKataTests: XCTestCase {
         //Assert
         XCTAssertTrue(initialScore == 0, "Players Initial score should be zero")
     }
+    
+    //MARK: - Test case for score update
+    
+    func testPlayer_PlayerStartsGame_ShouldUpdateScore() {
+        //Arrange
+        let player = Player(playerName: "Player 2")
+        //Act
+        player.play()
+        //Assert
+        XCTAssertTrue(player.score == 1, "Players score should update")
+    }
+
 }

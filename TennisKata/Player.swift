@@ -7,4 +7,8 @@ class Player {
         name = playerName
         score = 0
     }
+    
+    func play() {
+        score += 1
+    }
 }
