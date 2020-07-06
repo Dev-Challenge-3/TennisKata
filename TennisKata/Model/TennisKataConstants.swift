@@ -6,6 +6,7 @@ struct TennisKataConstants {
     static let loveFifteen = "Player 1 love - Player 2 fifteen"
     static let loveThirty = "Player 1 love - Player 2 thirty"
     static let loveForty = "Player 1 love - Player 2 forty"
+    static let fifteenAll = "Player 1 fifteen - Player 2 fifteen"
     
 }
 
