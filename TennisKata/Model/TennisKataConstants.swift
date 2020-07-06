@@ -12,5 +12,6 @@ struct TennisKataConstants {
     static let playOneAdvantage = "Player 1 Advantage"
     static let playerTwoAdvantage = "Player 2 Advantage"
     static let playOneWins = "Player 1 wins"
+    static let playerTwoWins = "Player 2 wins"
 }
 
