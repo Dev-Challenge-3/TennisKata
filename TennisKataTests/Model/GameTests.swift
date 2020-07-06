@@ -152,5 +152,16 @@ class GameTests: XCTestCase {
         //Assert
         XCTAssertTrue(gameScore == TennisKataConstants.playerTwoAdvantage, "Should return game score as \(TennisKataConstants.playerTwoAdvantage)")
     }
-
+    
+    //MARK: - Test case for Player 1 Wins
+    
+    func testGame_PlayerOneWins_ShoudReturnScore() {
+        //Arrange
+         playerServeWins(player: .playerOne, times: 4)
+         playerServeWins(player: .playerTwo, times: 2)
+         //Act
+         let gameScore = game.score()
+         //Assert
+        XCTAssertTrue(gameScore == TennisKataConstants.playOneWins, "Should return \(TennisKataConstants.playOneWins)")
+    }
 }
