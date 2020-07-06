@@ -33,6 +33,8 @@ class Game {
 
         if isDeuce() {
             return "Deuce"
+        }else if hasAdvantage() {
+            return playerWithHighestScore() + " Advantage"
         }
         
         return playerOneScore + playerTwoScore
@@ -42,6 +44,22 @@ class Game {
     
     private func isDeuce() -> Bool {
         return playerOne.score >= 3 && playerTwo.score == playerOne.score
+    }
+    
+    private func hasAdvantage() -> Bool {
+        if playerOne.score >= 4 && playerOne.score == playerTwo.score + 1 {
+            return true
+        }else if playerTwo.score >= 4 && playerTwo.score == playerOne.score + 1 {
+            return true
+        }
+        return false
+    }
+
+    private func playerWithHighestScore() -> String {
+        if (playerOne.score > playerTwo.score) {
+            return playerOne.name;
+        }
+        return playerTwo.name;
     }
     
     private func scoreTranslation(score: Int) -> String {
