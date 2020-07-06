@@ -30,11 +30,19 @@ class Game {
         
         let playerOneScore = "\(playerOne.name) \(scoreTranslation(score: playerOne.score)) - "
         let playerTwoScore = "\(playerTwo.name) \(scoreTranslation(score: playerTwo.score))"
+
+        if isDeuce() {
+            return "Deuce"
+        }
         
         return playerOneScore + playerTwoScore
     }
     
     //MARK: - Private Methods
+    
+    private func isDeuce() -> Bool {
+        return playerOne.score >= 3 && playerTwo.score == playerOne.score
+    }
     
     private func scoreTranslation(score: Int) -> String {
         
