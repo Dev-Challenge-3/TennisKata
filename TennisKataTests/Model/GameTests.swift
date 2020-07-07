@@ -242,4 +242,26 @@ class GameTests: XCTestCase {
         XCTAssertTrue(playerScore == "30","Player 2 expected to score 30")
     }
     
+    //MARK: - Test cases to display Player Advantage and Advantage breaker scores
+    
+    func testGame_AdvantageForPlayers_ShouldReturnScore() {
+        //Arrange
+        playerServeWins(player: .playerOne, times: 3)
+        playerServeWins(player: .playerTwo, times: 4)
+        //Act
+       let playerScore = game.playerScore(selectedPlayer: .playerTwo)
+        //Assert
+        XCTAssertTrue(playerScore == "AD", "Should display AD for Player 2 advantage")
+    }
+
+    func testGame_AdvantageBreakerScoreForPlayers_ShouldReturnScore() {
+        //Arrange
+        playerServeWins(player: .playerOne, times: 4)
+        playerServeWins(player: .playerTwo, times: 4)
+        //Act
+       let playerScore = game.playerScore(selectedPlayer: .playerOne)
+        //Assert
+        XCTAssertTrue(playerScore == "40", "Should return Player 1 score as 40")
+    }
+
 }

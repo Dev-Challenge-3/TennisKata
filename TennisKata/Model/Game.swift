@@ -82,6 +82,10 @@ final class Game {
             return score >= opponentScore + 2 ? "1" : "0"
         }
         
+        if hasAdvantage() {
+            return "AD"
+        }
+        
         switch score {
         case 0:
             return String(ScoreTranslation.love.rawValue)
