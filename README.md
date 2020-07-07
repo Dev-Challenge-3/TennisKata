@@ -1,7 +1,10 @@
 # TennisKata
 
 Requirements:
+
 1. Deployment Target 13.0
+2. Xcode 11.x
+3. iPhone 11 Simulator
 
 The scoring system:
 
@@ -20,3 +23,8 @@ The scoring system:
 6. If at least three points have been scored by each player, and the scores are equal, the score is “deuce”.
 
 7. If at least three points have been scored by each side and a player has one more point than his opponent, the score of the game is “advantage” for the player in the lead.
+
+Steps:
+
+1. Action to Player 1 and Player 2 buttons updates both the player's score and the game score.
+2. Clear button resets players and game score to the default value.
