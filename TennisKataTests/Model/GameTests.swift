@@ -174,6 +174,16 @@ class GameTests: XCTestCase {
         //Assert
         XCTAssertTrue(playerOneScore == "1", "Should update Player 1 score")
     }
+    
+    func testGame_PlayerTwoScoreWhenPlayerOneWins_ShouldResetScore() {
+        //Arrange
+         playerServeWins(player: .playerOne, times: 4)
+         playerServeWins(player: .playerTwo, times: 2)
+         //Act
+         let playerTwoScore = game.playerScore(selectedPlayer: .playerTwo)
+         //Assert
+         XCTAssertTrue(playerTwoScore == "0", "Should reset Player 2 score")
+    }
         
     //MARK: - Test case for Player 2 Wins
     
@@ -209,5 +219,6 @@ class GameTests: XCTestCase {
         let playerScore = game.playerScore(selectedPlayer: .playerTwo)
         //Assert
         XCTAssertTrue(playerScore == "30","Player 2 expected to score 30")
-    }    
+    }
+    
 }

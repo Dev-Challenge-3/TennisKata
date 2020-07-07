@@ -67,21 +67,21 @@ final class Game {
     func playerScore(selectedPlayer: SelectedPlayer) -> String {
         switch selectedPlayer {
         case .playerOne:
-            return playerScoreTranslation(score: playerOne.score)
+            return playerScoreTranslation(score: playerOne.score, opponentScore: playerTwo.score)
         case .playerTwo:
-            return playerScoreTranslation(score: playerTwo.score)
+            return playerScoreTranslation(score: playerTwo.score, opponentScore: playerOne.score)
         }
 
     }
     
     //MARK: - Private Methods
     
-    private func playerScoreTranslation(score: Int) -> String {
+    private func playerScoreTranslation(score: Int, opponentScore: Int) -> String {
                 
         if hasWinner() {
-            return "1"
+            return score >= opponentScore + 2 ? "1" : "0"
         }
-                
+        
         switch score {
         case 0:
             return String(ScoreTranslation.love.rawValue)
@@ -121,12 +121,12 @@ final class Game {
         
         return false
     }
-    
+
     private func scoreTranslation(score: Int) -> String {
         
         switch score {
         case 0:
-            return String(ScoreTranslation.love.description)
+            return ScoreTranslation.love.description
         case 1:
             return ScoreTranslation.fifteen.description
         case 2:
