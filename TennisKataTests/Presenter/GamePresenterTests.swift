@@ -31,7 +31,7 @@ class GamePresenterTests: XCTestCase {
         //Act
         presenter.playerOneScore()
         //Assert
-        XCTAssertEqual(expectedScore, mockView.playerOneScore, " Player One score matches")
+        XCTAssertEqual(expectedScore, mockView.playerOneScore, "Player One score matches")
     }
     
     //MARK: - Player Two Score

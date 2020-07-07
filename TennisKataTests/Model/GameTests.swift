@@ -29,7 +29,7 @@ class GameTests: XCTestCase {
     
     //MARK: - Test case for the score 15 - 0
 
-    func testGame_GameScoreAfterPlayerOneScoresFifteen_ShouldReturnTrue() {
+    func testGame_GameScoreAfterPlayerOneScoresFifteen_ShouldReturnScore() {
         //Arrange
         playerServeWins(player: .playerOne, times: 1)
         //Act
@@ -40,7 +40,7 @@ class GameTests: XCTestCase {
     
     //MARK: - Test case for the score 30 - 0
     
-    func testGame_GameScoreAfterPlayerOneScoresThirty_ShouldReturnTrue() {
+    func testGame_GameScoreAfterPlayerOneScoresThirty_ShouldReturnScore() {
         //Arrange
         playerServeWins(player: .playerOne, times: 2)
         //Act
@@ -104,6 +104,16 @@ class GameTests: XCTestCase {
         //Assert
         XCTAssertTrue(gameScore == TennisKataConstants.fifteenAll, "Should return game score as \(TennisKataConstants.fifteenAll)")
     }
+    
+    func testGame_PlayerScoresFifteenAll_ShouldReturnPlayerOneScore() {
+        //Arrange
+        playerServeWins(player: .playerOne, times: 1)
+        playerServeWins(player: .playerTwo, times: 1)
+        //Act
+        let playerScore = game.playerScore(selectedPlayer: .playerOne)
+        //Assert
+        XCTAssertTrue(playerScore == "15","Player 1 expected to score 15")
+    }
         
     //MARK: - Test case for the score 30 - 30
 
@@ -115,6 +125,16 @@ class GameTests: XCTestCase {
         let gameScore = game.score()
         //Assert
         XCTAssertTrue(gameScore == TennisKataConstants.thirtyAll, "Should return game score as \(TennisKataConstants.thirtyAll)")
+    }
+    
+    func testGame_PlayerScoresThirtyAll_ShouldReturnPlayerTwoScore() {
+        //Arrange
+        playerServeWins(player: .playerOne, times: 2)
+        playerServeWins(player: .playerTwo, times: 2)
+        //Act
+        let playerScore = game.playerScore(selectedPlayer: .playerTwo)
+        //Assert
+        XCTAssertTrue(playerScore == "30","Player 2 expected to score 30")
     }
     
     //MARK: - Test case for Deuce
@@ -151,6 +171,38 @@ class GameTests: XCTestCase {
         let gameScore = game.score()
         //Assert
         XCTAssertTrue(gameScore == TennisKataConstants.playerTwoAdvantage, "Should return game score as \(TennisKataConstants.playerTwoAdvantage)")
+    }
+    
+    func testGame_AdvantageForPlayers_ShouldReturnScore() {
+        //Arrange
+        playerServeWins(player: .playerOne, times: 3)
+        playerServeWins(player: .playerTwo, times: 4)
+        //Act
+       let playerScore = game.playerScore(selectedPlayer: .playerTwo)
+        //Assert
+        XCTAssertTrue(playerScore == "AD", "Should display AD for Player 2 advantage")
+    }
+
+    //MARK: - Test cases for Advantage Breaker
+    
+    func testGame_AdvantageBreaker_ShouldReturnScore() {
+        //Arrange
+        playerServeWins(player: .playerOne, times: 4)
+        playerServeWins(player: .playerTwo, times: 4)
+        //Act
+       let gameScore = game.score()
+        //Assert
+        XCTAssertTrue(gameScore == TennisKataConstants.deuce, "Player score returns to \(TennisKataConstants.deuce)")
+    }
+    
+    func testGame_AdvantageBreakerScoreForPlayers_ShouldReturnScore() {
+        //Arrange
+        playerServeWins(player: .playerOne, times: 4)
+        playerServeWins(player: .playerTwo, times: 4)
+        //Act
+       let playerScore = game.playerScore(selectedPlayer: .playerOne)
+        //Assert
+        XCTAssertTrue(playerScore == "40", "Player 1 score for Deuce")
     }
     
     //MARK: - Test case for Player 1 Wins
@@ -216,52 +268,5 @@ class GameTests: XCTestCase {
          //Assert
          XCTAssertTrue(playerOneScore == "0", "Should update Player 1 score")
     }
-
     
-    //MARK: - Test case to display player one score
-
-    func testGame_PlayerScoresFifteenAll_ShouldReturnPlayerOneScore() {
-        //Arrange
-        playerServeWins(player: .playerOne, times: 1)
-        playerServeWins(player: .playerTwo, times: 1)
-        //Act
-        let playerScore = game.playerScore(selectedPlayer: .playerOne)
-        //Assert
-        XCTAssertTrue(playerScore == "15","Player 1 expected to score 15")
-    }
-
-    //MARK: - Test case to display player two score
-
-    func testGame_PlayerScoresThirtyAll_ShouldReturnPlayerTwoScore() {
-        //Arrange
-        playerServeWins(player: .playerOne, times: 2)
-        playerServeWins(player: .playerTwo, times: 2)
-        //Act
-        let playerScore = game.playerScore(selectedPlayer: .playerTwo)
-        //Assert
-        XCTAssertTrue(playerScore == "30","Player 2 expected to score 30")
-    }
-    
-    //MARK: - Test cases to display Player Advantage and Advantage breaker scores
-    
-    func testGame_AdvantageForPlayers_ShouldReturnScore() {
-        //Arrange
-        playerServeWins(player: .playerOne, times: 3)
-        playerServeWins(player: .playerTwo, times: 4)
-        //Act
-       let playerScore = game.playerScore(selectedPlayer: .playerTwo)
-        //Assert
-        XCTAssertTrue(playerScore == "AD", "Should display AD for Player 2 advantage")
-    }
-
-    func testGame_AdvantageBreakerScoreForPlayers_ShouldReturnScore() {
-        //Arrange
-        playerServeWins(player: .playerOne, times: 4)
-        playerServeWins(player: .playerTwo, times: 4)
-        //Act
-       let playerScore = game.playerScore(selectedPlayer: .playerOne)
-        //Assert
-        XCTAssertTrue(playerScore == "40", "Should return Player 1 score as 40")
-    }
-
 }

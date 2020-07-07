@@ -2,24 +2,26 @@ enum SelectedPlayer {
     case playerOne, playerTwo
 }
 
-enum ScoreTranslation: String {
+private enum ScoreTranslation: Int {
     
     case love, fifteen, thirty, forty
 
-    var description: String {
-        get {
-            switch self {
-            case .love:
-                return "0"
-            case .fifteen:
-                return "15"
-            case .thirty:
-                return "30"
-            case .forty:
-                return "40"
-            }
-        }
+    static let numberMapper: [ScoreTranslation: String] = [
+        .love: "0", .fifteen: "15", .thirty: "30", .forty: "40"
+    ]
+    
+    static let wordMapper: [ScoreTranslation: String] = [
+        .love: "love", .fifteen: "fifteen", .thirty: "thirty", .forty: "forty"
+    ]
+    
+    var scoreNumber: String {
+        return ScoreTranslation.numberMapper[self]!
     }
+    
+    var scoreWord: String {
+        return ScoreTranslation.wordMapper[self]!
+    }
+
 }
 
 final class Game {
@@ -48,8 +50,8 @@ final class Game {
 
     func score() -> String {
         
-        let playerOneScore = "\(playerOne.name) \(scoreTranslation(score: playerOne.score)) - "
-        let playerTwoScore = "\(playerTwo.name) \(scoreTranslation(score: playerTwo.score))"
+        var playerOneScore = ""
+        var playerTwoScore = ""
         
         if isDeuce() {
             return "Deuce"
@@ -57,6 +59,13 @@ final class Game {
             return playerWithHighestScore() + " Advantage"
         }else if hasWinner() {
             return playerWithHighestScore() + " wins"
+        }
+        
+        if let scorePlayerOne = ScoreTranslation(rawValue: playerOne.score) {
+            playerOneScore = "\(playerOne.name) \(scorePlayerOne.scoreWord) - "
+        }
+        if let scorePlayerTwo = ScoreTranslation(rawValue: playerTwo.score) {
+            playerTwoScore = "\(playerTwo.name) \(scorePlayerTwo.scoreWord)"
         }
         
         return playerOneScore + playerTwoScore
@@ -77,16 +86,23 @@ final class Game {
     //MARK: - Private Methods
     
     private func playerScoreTranslation(score: Int, opponentScore: Int) -> String {
-                
+        
+        var scoreValue = ""
+        
         if hasWinner() {
             return score >= opponentScore + 2 ? "1" : "0"
-        }
-        
-        if hasAdvantage() {
+        }else if hasAdvantage() {
             return "AD"
+        }else if isDeuce() {
+            return "40"
         }
         
-        return playerScore(score: score)
+        if let playerScore = ScoreTranslation(rawValue: score) {
+            scoreValue =  playerScore.scoreNumber
+        }
+
+        return scoreValue
+        
     }
     
     private func isDeuce() -> Bool {
@@ -101,19 +117,6 @@ final class Game {
         
         return false
     }
-
-    private func playerScore(score: Int) -> String {
-        switch score {
-        case 0:
-            return ScoreTranslation.love.description
-        case 1:
-            return ScoreTranslation.fifteen.description
-        case 2:
-            return ScoreTranslation.thirty.description
-        default:
-            return ScoreTranslation.forty.description
-        }
-    }
     
     private func playerWithHighestScore() -> String {
         
@@ -127,19 +130,5 @@ final class Game {
         }
         
         return false
-    }
-
-    private func scoreTranslation(score: Int) -> String {
-
-        switch score {
-        case 0:
-            return ScoreTranslation.love.rawValue
-        case 1:
-            return ScoreTranslation.fifteen.rawValue
-        case 2:
-            return ScoreTranslation.thirty.rawValue
-        default:
-            return ScoreTranslation.forty.rawValue
-        }
     }
 }
