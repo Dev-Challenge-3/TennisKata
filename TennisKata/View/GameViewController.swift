@@ -34,7 +34,7 @@ class GameViewController: UIViewController {
     
     //MARK: - Update Scores
     
-    func updateScores() {
+    private func updateScores() {
         _ = presenter.playerOneScore()
         _ = presenter.playerTwoScore()
         _ = presenter.displayScore()

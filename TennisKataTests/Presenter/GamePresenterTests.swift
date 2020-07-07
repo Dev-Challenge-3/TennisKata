@@ -3,8 +3,8 @@ import XCTest
 
 class GamePresenterTests: XCTestCase {
 
-    let mockView = GameViewMock()
-    var presenter: GamePresenter!
+    private let mockView = GameViewMock()
+    private var presenter: GamePresenter!
     
     override func setUp() {
         super.setUp()

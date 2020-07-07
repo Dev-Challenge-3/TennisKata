@@ -1,8 +1,8 @@
 class GamePresenter {
     
     private weak var view: GameView?
-    let playerOne: Player
-    let playerTwo: Player
+    private let playerOne: Player
+    private let playerTwo: Player
     let game: Game
 
     init(view: GameView?) {
