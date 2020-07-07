@@ -175,14 +175,14 @@ class GameTests: XCTestCase {
         XCTAssertTrue(playerOneScore == "1", "Should update Player 1 score")
     }
     
-    func testGame_PlayerTwoScoreWhenPlayerOneWins_ShouldResetScore() {
+    func testGame_PlayerTwoScoreWhenPlayerOneWins_ShouldUpdateGameScore() {
         //Arrange
          playerServeWins(player: .playerOne, times: 4)
          playerServeWins(player: .playerTwo, times: 2)
          //Act
          let playerTwoScore = game.playerScore(selectedPlayer: .playerTwo)
          //Assert
-         XCTAssertTrue(playerTwoScore == "0", "Should reset Player 2 score")
+         XCTAssertTrue(playerTwoScore == "0", "Should update Player 2 score")
     }
         
     //MARK: - Test case for Player 2 Wins
@@ -196,6 +196,27 @@ class GameTests: XCTestCase {
          //Assert
         XCTAssertTrue(gameScore == TennisKataConstants.playerTwoWins, "Should return \(TennisKataConstants.playerTwoWins)")
     }
+    
+    func testGame_PlayerTwoScoreWhenPlayerTwoWins_ShouldUpdateGameScore() {
+        //Arrange
+        playerServeWins(player: .playerOne, times: 2)
+        playerServeWins(player: .playerTwo, times: 4)
+        //Act
+        let playerTwoScore = game.playerScore(selectedPlayer: .playerTwo)
+        //Assert
+        XCTAssertTrue(playerTwoScore == "1", "Should update Player 2 score")
+    }
+    
+    func testGame_PlayerOneScoreWhenPlayerTwoWins_ShouldUpdateGameScore() {
+        //Arrange
+         playerServeWins(player: .playerOne, times: 2)
+         playerServeWins(player: .playerTwo, times: 4)
+         //Act
+         let playerOneScore = game.playerScore(selectedPlayer: .playerOne)
+         //Assert
+         XCTAssertTrue(playerOneScore == "0", "Should update Player 1 score")
+    }
+
     
     //MARK: - Test case to display player one score
 
