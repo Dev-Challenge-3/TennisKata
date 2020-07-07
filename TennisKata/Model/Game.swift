@@ -2,7 +2,27 @@ enum SelectedPlayer {
     case playerOne, playerTwo
 }
 
-class Game {
+enum ScoreTranslation: Int, CustomStringConvertible {
+    
+    case love = 0, fifteen = 15, thirty = 30, forty = 40
+    
+    var description: String {
+        get {
+            switch self {
+            case .love:
+                return "love"
+            case .fifteen:
+                return "fifteen"
+            case .thirty:
+                return "thirty"
+            case .forty:
+                return "forty"
+            }
+        }
+    }
+}
+
+final class Game {
     
     private let playerOne: Player
     private let playerTwo: Player
@@ -53,30 +73,26 @@ class Game {
         }
 
     }
-
     
     //MARK: - Private Methods
     
     private func playerScoreTranslation(score: Int) -> String {
-        
-        var playerScore = ""
-        
-        playerScore = hasWinner() ? "1" : "0"
+                
+        if hasWinner() {
+            return "1"
+        }
                 
         switch score {
         case 0:
-            playerScore = String(score)
+            return String(ScoreTranslation.love.rawValue)
         case 1:
-            playerScore = "15"
+            return String(ScoreTranslation.fifteen.rawValue)
         case 2:
-            playerScore = "30"
-        case 3:
-            playerScore = "40"
+            return String(ScoreTranslation.thirty.rawValue)
         default:
-            break
+            return String(ScoreTranslation.forty.rawValue)
         }
      
-        return playerScore
     }
     
     private func isDeuce() -> Bool {
@@ -84,27 +100,25 @@ class Game {
     }
     
     private func hasAdvantage() -> Bool {
-        if playerOne.score >= 4 && playerOne.score == playerTwo.score + 1 {
-            return true
-        }else if playerTwo.score >= 4 && playerTwo.score == playerOne.score + 1 {
+        
+        if (playerOne.score >= 4 || playerTwo.score >= 4) && (abs(playerOne.score - playerTwo.score) == 1) {
             return true
         }
+        
         return false
     }
 
     private func playerWithHighestScore() -> String {
-        if (playerOne.score > playerTwo.score) {
-            return playerOne.name;
-        }
-        return playerTwo.name;
+        
+        return playerOne.score > playerTwo.score ? playerOne.name : playerTwo.name
     }
-    
+
     private func hasWinner() -> Bool {
-        if(playerOne.score >= 4 && playerOne.score >= playerTwo.score + 2 ) {
-            return true
-        }else if (playerTwo.score >= 4 && playerTwo.score  >= playerOne.score + 2) {
+        
+        if (playerOne.score >= 4 || playerTwo.score >= 4) && (abs(playerOne.score - playerTwo.score) >= 2) {
             return true
         }
+        
         return false
     }
     
@@ -112,13 +126,13 @@ class Game {
         
         switch score {
         case 0:
-            return "love"
+            return String(ScoreTranslation.love.description)
         case 1:
-            return "fifteen"
+            return ScoreTranslation.fifteen.description
         case 2:
-            return "thirty"
+            return ScoreTranslation.thirty.description
         default:
-            return "forty"
+            return ScoreTranslation.forty.description
         }
     }
 }

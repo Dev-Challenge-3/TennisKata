@@ -173,9 +173,8 @@ class GameTests: XCTestCase {
         let playerOneScore = game.playerScore(selectedPlayer: .playerOne)
         //Assert
         XCTAssertTrue(playerOneScore == "1", "Should update Player 1 score")
-
     }
-    
+        
     //MARK: - Test case for Player 2 Wins
     
     func testGame_PlayerTwoWins_ShoudReturnScore() {
@@ -210,6 +209,5 @@ class GameTests: XCTestCase {
         let playerScore = game.playerScore(selectedPlayer: .playerTwo)
         //Assert
         XCTAssertTrue(playerScore == "30","Player 2 expected to score 30")
-    }
-    
+    }    
 }
