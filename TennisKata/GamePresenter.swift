@@ -30,4 +30,12 @@ class GamePresenter {
         view?.display(scoreMessage: game.score())
     }
 
+    func resetScore() {
+        playerOne.clearScore()
+        playerTwo.clearScore()
+        view?.playerOneScore(playerOneScore: "0")
+        view?.playerTwoScore(playerTwoScore: "0")
+        view?.display(scoreMessage: "Love All")
+    }
+
 }

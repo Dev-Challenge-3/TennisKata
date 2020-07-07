@@ -60,5 +60,14 @@ class GamePresenterTests: XCTestCase {
 
     }
 
+    func testGamePresenter_ClearScore_ShouldResetScore() {
+        //Arrange
+        let expectedScore = "Love All"
+        //Act
+        presenter.resetScore()
+        //Assert
+        XCTAssertEqual(expectedScore, mockView.gameScore, "Game score matches")
+    }
+
 
 }
