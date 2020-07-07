@@ -46,5 +46,19 @@ class GamePresenterTests: XCTestCase {
         XCTAssertEqual(expectedScore, mockView.playerTwoScore, "Player Two score matches")
     }
 
+    //MARK: - Game Score
+    
+    func testGamePresenter_DisplayScore_ShouldReturnScore() {
+        //Arrange
+        let expectedScore = TennisKataConstants.deuce
+        playerScore(player: .playerOne, times: 3)
+        playerScore(player: .playerTwo, times: 3)
+        //Act
+        presenter.displayScore()
+        //Assert
+        XCTAssertEqual(expectedScore, mockView.gameScore, "Game score matches")
+
+    }
+
 
 }

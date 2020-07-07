@@ -23,5 +23,11 @@ class GamePresenter {
     func playerTwoScore() {
         view?.playerTwoScore(playerTwoScore: game.playerScore(selectedPlayer: .playerTwo))
     }
+    
+    //MARK: - Game Score
+    
+    func displayScore() {
+        view?.display(scoreMessage: game.score())
+    }
 
 }
