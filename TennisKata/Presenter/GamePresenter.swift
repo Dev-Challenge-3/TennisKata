@@ -30,6 +30,8 @@ class GamePresenter {
         view?.display(scoreMessage: game.score())
     }
 
+    //MARK: - Reset scores
+    
     func resetScore() {
         playerOne.clearScore()
         playerTwo.clearScore()

@@ -92,7 +92,7 @@ final class Game {
         if hasWinner() {
             return score >= opponentScore + 2 ? "1" : "0"
         }else if hasAdvantage() {
-            return "AD"
+            return score == opponentScore + 1 ? "AD" : "40"
         }else if isDeuce() {
             return "40"
         }

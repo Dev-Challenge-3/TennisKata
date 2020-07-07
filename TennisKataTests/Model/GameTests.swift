@@ -198,7 +198,7 @@ class GameTests: XCTestCase {
     func testGame_AdvantageBreakerScoreForPlayers_ShouldReturnScore() {
         //Arrange
         playerServeWins(player: .playerOne, times: 4)
-        playerServeWins(player: .playerTwo, times: 4)
+        playerServeWins(player: .playerTwo, times: 5)
         //Act
        let playerScore = game.playerScore(selectedPlayer: .playerOne)
         //Assert

@@ -13,7 +13,7 @@
 		4E16953924B4F4B300EA37B8 /* GamePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E16953824B4F4B300EA37B8 /* GamePresenter.swift */; };
 		4EFC360C24B3AD4F00E19D85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFC360B24B3AD4F00E19D85 /* AppDelegate.swift */; };
 		4EFC360E24B3AD4F00E19D85 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFC360D24B3AD4F00E19D85 /* SceneDelegate.swift */; };
-		4EFC361024B3AD4F00E19D85 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFC360F24B3AD4F00E19D85 /* ViewController.swift */; };
+		4EFC361024B3AD4F00E19D85 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFC360F24B3AD4F00E19D85 /* GameViewController.swift */; };
 		4EFC361324B3AD4F00E19D85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EFC361124B3AD4F00E19D85 /* Main.storyboard */; };
 		4EFC361524B3AD5000E19D85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EFC361424B3AD5000E19D85 /* Assets.xcassets */; };
 		4EFC361824B3AD5000E19D85 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EFC361624B3AD5000E19D85 /* LaunchScreen.storyboard */; };
@@ -42,7 +42,7 @@
 		4EFC360824B3AD4F00E19D85 /* TennisKata.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TennisKata.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EFC360B24B3AD4F00E19D85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4EFC360D24B3AD4F00E19D85 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4EFC360F24B3AD4F00E19D85 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4EFC360F24B3AD4F00E19D85 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		4EFC361224B3AD4F00E19D85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4EFC361424B3AD5000E19D85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4EFC361724B3AD5000E19D85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -117,7 +117,7 @@
 		4E16953F24B501A100EA37B8 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4EFC360F24B3AD4F00E19D85 /* ViewController.swift */,
+				4EFC360F24B3AD4F00E19D85 /* GameViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -293,7 +293,7 @@
 				4EFC363624B3C2D900E19D85 /* TennisKataConstants.swift in Sources */,
 				4EFC363424B3B96F00E19D85 /* Game.swift in Sources */,
 				4E16953724B4F48500EA37B8 /* GameViewProtocol.swift in Sources */,
-				4EFC361024B3AD4F00E19D85 /* ViewController.swift in Sources */,
+				4EFC361024B3AD4F00E19D85 /* GameViewController.swift in Sources */,
 				4EFC360C24B3AD4F00E19D85 /* AppDelegate.swift in Sources */,
 				4EFC360E24B3AD4F00E19D85 /* SceneDelegate.swift in Sources */,
 			);
