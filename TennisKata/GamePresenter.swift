@@ -18,4 +18,10 @@ class GamePresenter {
         view?.playerOneScore(playerOneScore: game.playerScore(selectedPlayer: .playerOne))
     }
 
+    //MARK: - Player Two Score
+    
+    func playerTwoScore() {
+        view?.playerTwoScore(playerTwoScore: game.playerScore(selectedPlayer: .playerTwo))
+    }
+
 }

@@ -33,5 +33,18 @@ class GamePresenterTests: XCTestCase {
         //Assert
         XCTAssertEqual(expectedScore, mockView.playerOneScore, " Player One score matches")
     }
+    
+    //MARK: - Player Two Score
+    
+    func testGamePresenter_PlayerTwoScore_ShouldReturnPlayerTwoScore() {
+        //Arrange
+        let expectedScore = "30"
+        playerScore(player: .playerTwo, times: 2)
+        //Act
+        presenter.playerTwoScore()
+        //Assert
+        XCTAssertEqual(expectedScore, mockView.playerTwoScore, "Player Two score matches")
+    }
+
 
 }
