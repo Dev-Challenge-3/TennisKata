@@ -59,16 +59,24 @@ class Game {
     
     private func playerScoreTranslation(score: Int) -> String {
         
+        var playerScore = ""
+        
+        playerScore = hasWinner() ? "1" : "0"
+                
         switch score {
         case 0:
-            return String(score)
+            playerScore = String(score)
         case 1:
-            return "15"
+            playerScore = "15"
         case 2:
-            return "30"
+            playerScore = "30"
+        case 3:
+            playerScore = "40"
         default:
-            return "40"
+            break
         }
+     
+        return playerScore
     }
     
     private func isDeuce() -> Bool {
